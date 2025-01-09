@@ -75,3 +75,4 @@ end
 
 gem 'leaflet-rails'
 gem "ostruct"
+gem "letter_opener"
