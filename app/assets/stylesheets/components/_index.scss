@@ -4,6 +4,21 @@
 @import "form_legend_clear";
 @import "navbar";
 
+#btn-contact-homepage {
+  background:black;
+  color: white;
+  border: 1px solid grey;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    background: white;
+    color: black;
+  }
+}
 
 .footer {
   background: #F4F4F4;
@@ -28,6 +43,4 @@
 .footer-links a:hover {
   opacity: 1;
 }
-.footer .fa-heart {
-  color: #D23333;
-}
+

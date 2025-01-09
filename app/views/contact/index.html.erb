@@ -1,29 +1,47 @@
-<section class="contact-info">
-  <h2>Contactez-nous</h2>
-  <p>Adresse : 123 Rue de la Pâtisserie, Paris</p>
-  <p>Email : contact@patisseriedy.com</p>
-  <p>Téléphone : +33 1 23 45 67 89</p>
-</section>
+<div class="contact-form d-flex justify-content-center m-3 p-3">
+  <div class="text-align-center text-center">
+    <%# Devis %>
+    <h2>Demande de devis</h2>
+    <%# Formulaire devis %>
+    <%= form_with url: "#" do |f| %>
+      <div>
+        <%= f.label :first_name, "Prénom" %>
+        <%= f.text_field :first_name, required: true %>
+      </div>
+      <div>
+        <%= f.label :last_name, "Nom" %>
+        <%= f.text_field :last_name, required: true %>
+      </div>
+      <div>
+        <%= f.label :company_name, "Société" %>
+        <%= f.text_field :company_name %>
+      </div>
+      <div>
+        <%= f.label :email, "Email" %>
+        <%= f.email_field :email, required: true %>
+      </div>
+      <div>
+        <%= f.label :phone_number, "Numéro de téléphone" %>
+        <%= f.email_field :email, required: true %>
+      </div>
+      <div>
+        <%= f.label :message, "Message" %>
+        <%= f.text_area :message, rows: 5, required: true %>
+      </div>
+      <%= f.submit "Envoyer", class: "btn-contact-homepage" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="contact-info d-flex justify-content-center m-3 p-3">
+  <div class="text-align-center text-center">
+    <h2>Contactez-nous</h2>
+    <p>Adresse : 123 Rue de la Pâtisserie, Paris</p>
+    <p>Email : contact@patisseriedy.com</p>
+    <p>Téléphone : +33 1 23 45 67 89</p>
+  </div>
+</div>
 
 <div id="map" style="height: 400px;"></div>
 
 <%= link_to "Home", root_path %>
-
-<section class="contact-form">
-  <h2>Demande de devis</h2>
-  <%= form_with url: "#" do |f| %>
-    <div>
-      <%= f.label :name, "Nom complet" %>
-      <%= f.text_field :name, required: true %>
-    </div>
-    <div>
-      <%= f.label :email, "Email" %>
-      <%= f.email_field :email, required: true %>
-    </div>
-    <div>
-      <%= f.label :message, "Message" %>
-      <%= f.text_area :message, rows: 5, required: true %>
-    </div>
-    <%= f.submit "Envoyer", class: "btn btn-primary" %>
-  <% end %>
-</section>
