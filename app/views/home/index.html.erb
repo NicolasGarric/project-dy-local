@@ -1,2 +1,127 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="banner">
+  <%= image_tag "banner.webp", class: "img-fluid w-100" %>
+</div>
+
+<div class="container">
+  <div class="d-flex justify-content-center m-3 p-3">
+    <div class="align-item-center">
+      <h1>Bienvenue au laboratoire Pâtisserie D&Y</h1>
+      <p>Découvrez notre expertise et nos réalisations uniques.</p>
+      <%= link_to "Contact", contact_path %>
+    </div>
+  </div>
+
+
+  <div class="wrapper">
+    <div class="">
+      <section id="laboratory-characteristics">
+      <h1>Caractéristiques Techniques du Laboratoire de Pâtisserie</h1>
+    </div>
+
+    <div class="card m-2 rounded shadow-sm p-3">
+      <h2>Dimensions et Structure</h2>
+      <ul>
+        <li><strong>Surface totale :</strong> 120 m²</li>
+        <li><strong>Hauteur sous plafond :</strong> 3,5 m</li>
+        <li><strong>Revêtement de sol :</strong> Résine époxy antidérapante et facile à nettoyer</li>
+        <li><strong>Murs :</strong> Carrelage blanc alimentaire sur une hauteur de 2 m</li>
+        <li><strong>Plafond :</strong> Faux plafond acoustique avec peinture lessivable</li>
+      </ul>
+    </div>
+
+    <div class="card m-2 rounded shadow-sm p-3">
+      <h2>Équipement de Production</h2>
+
+      <ol>
+        <li>
+          <h6>Fours</h6>
+          <ul>
+            <li>Four ventilé à 10 niveaux, capacité GN 1/1</li>
+            <li>Four à soles pour pâtisserie, 4 étages avec contrôle indépendant</li>
+            <li>Four micro-ondes industriel (1000W minimum)</li>
+          </ul>
+        </li>
+
+        <li>
+          <h6>Plans de Travail</h6>
+          <ul>
+            <li>Plans en inox alimentaire, épaisseur 3 cm, résistants aux chocs thermiques</li>
+            <li>Plan en marbre pour le travail des pâtes (chocolat, viennoiseries)</li>
+          </ul>
+        </li>
+
+        <li>
+          <h6>Réfrigération et Congélation</h6>
+          <ul>
+            <li>Réfrigérateurs positifs : 600 L, avec gestion électronique de la température</li>
+            <li>Congélateurs négatifs : -18 °C, capacité 500 L</li>
+            <li>Armoire de surgélation rapide avec 8 grilles</li>
+          </ul>
+        </li>
+
+        <li>
+          <h6>Machines de Pâtisserie</h6>
+          <ul>
+            <li>Robot pâtissier professionnel 10 L avec accessoires</li>
+            <li>Mélangeur planétaire, capacité 20 L</li>
+            <li>Laminoir à pâte pour viennoiseries</li>
+            <li>Turbine à glace professionnelle, capacité 2 L/h</li>
+            <li>Tempéreuse à chocolat avec contrôle précis de la température</li>
+            <li>Trancheuse pour gâteaux et génoises</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+
+    <div class="card m-2 rounded shadow-sm p-3">
+      <h2>Hygiène et Sécurité</h2>
+      <ul>
+        <li>Lavabo avec commande au genou pour lavage des mains</li>
+        <li>Bac plonge trois compartiments (lavage, rinçage, désinfection)</li>
+        <li>Distributeur de savon et de papier à usage unique</li>
+        <li>Système de gestion des déchets (tri sélectif et compacteur intégré)</li>
+        <li>Extincteurs adaptés aux feux électriques et graisses</li>
+      </ul>
+    </div>
+
+    <div class="card m-2 rounded shadow-sm p-3">
+      <h2>Énergie et Fluides</h2>
+      <ul>
+        <li>Alimentation électrique : Triphasé 380V, tableau électrique avec disjoncteurs différentiels</li>
+        <li>Points d’eau : Eau chaude/froide à plusieurs postes de travail</li>
+        <li>Consommation d’eau : Réduction avec robinets à économie d’eau</li>
+        <li>Gaz : Alimentation sécurisée pour cuisinières et chalumeaux</li>
+      </ul>
+    </div>
+
+    <div class="card m-2 rounded shadow-sm p-3">
+      <h2>Technologie</h2>
+      <ul>
+        <li>Système de gestion des commandes intégré (tablette tactile)</li>
+        <li>Balance connectée pour traçabilité des recettes</li>
+        <li>Écran interactif pour consultation de fiches techniques et recettes</li>
+        <li>Caméras de surveillance pour garantir la conformité aux normes</li>
+        <li>Wi-Fi dédié pour les outils connectés</li>
+      </ul>
+    </div>
+
+    <div class="card m-2 rounded shadow-sm p-3">
+      <h2>Confort des Pâtissiers</h2>
+      <ul>
+        <li>Zone de pause équipée d’un coin café et micro-ondes</li>
+        <li>Vestiaires avec casiers individuels</li>
+        <li>Climatisation réversible dans tout le laboratoire</li>
+        <li>Sièges ergonomiques pour les tâches longues</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="footer d-flex justify-content-center align-items-center">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+</div>
