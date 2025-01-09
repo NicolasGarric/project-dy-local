@@ -1,0 +1,71 @@
+
+<div class="contact-info d-flex justify-content-center m-3 p-3">
+  <div class="text-align-center text-center">
+    <h1>Demande de devis</h1>
+
+    <%= form_with model: @contact_request, url: contact_requests_path do |f| %>
+      <div>
+        <%= f.label :first_name, "Prénom" %>
+        <%= f.text_field :first_name, class: "form-control", required: true %>
+        <% if f.object.errors[:first_name].any? %>
+          <div class="error-message text-danger">
+            <%= f.object.errors.full_messages_for(:first_name).join(", ") %>
+          </div>
+        <% end %>
+      </div>
+
+      <div>
+        <%= f.label :last_name, "Nom" %>
+        <%= f.text_field :last_name, class: "form-control", required: true %>
+        <% if f.object.errors[:last_name].any? %>
+          <div class="error-message text-danger">
+            <%= f.object.errors.full_messages_for(:last_name).join(", ") %>
+          </div>
+        <% end %>
+      </div>
+
+      <div>
+        <%= f.label :email, "Email" %>
+        <%= f.email_field :email, class: "form-control", required: true %>
+        <% if f.object.errors[:email].any? %>
+          <div class="error-message text-danger">
+            <%= f.object.errors.full_messages_for(:email).join(", ") %>
+          </div>
+        <% end %>
+      </div>
+
+      <div>
+        <%= f.label :phone_number, "Numéro de téléphone" %>
+        <%= f.telephone_field :phone_number, class: "form-control", required: true %>
+        <% if f.object.errors[:phone_number].any? %>
+          <div class="error-message text-danger">
+            <%= f.object.errors.full_messages_for(:phone_number).join(", ") %>
+          </div>
+        <% end %>
+      </div>
+
+      <div>
+        <%= f.label :message, "Message" %>
+        <%= f.text_area :message, rows: 5, class: "form-control", required: true %>
+        <% if f.object.errors[:message].any? %>
+          <div class="error-message text-danger">
+            <%= f.object.errors.full_messages_for(:message).join(", ") %>
+          </div>
+        <% end %>
+      </div>
+
+      <div>
+        <%= f.submit "Envoyer", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="contact-info d-flex justify-content-center m-3 p-3">
+  <div class="text-align-center text-center">
+    <h2>Contactez-nous</h2>
+    <p>Adresse : 123 Rue de la Pâtisserie, Paris</p>
+    <p>Email : contact@patisseriedy.com</p>
+    <p>Téléphone : +33 1 23 45 67 89</p>
+  </div>
+</div>
