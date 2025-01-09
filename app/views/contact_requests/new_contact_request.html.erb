@@ -1,0 +1,31 @@
+<h1>Demande de devis</h1>
+<%= form_with model: @contact_request, url: contact_requests_path do |f| %>
+  <div>
+    <%= f.label :first_name, "Prénom" %>
+    <%= f.text_field :first_name, class: "form-control", required: true %>
+    <%= f.error_message_on :first_name %>
+  </div>
+  <div>
+    <%= f.label :last_name, "Nom" %>
+    <%= f.text_field :last_name, class: "form-control", required: true %>
+    <%= f.error_message_on :last_name %>
+  </div>
+  <div>
+    <%= f.label :email, "Email" %>
+    <%= f.email_field :email, class: "form-control", required: true %>
+    <%= f.error_message_on :email %>
+  </div>
+  <div>
+    <%= f.label :phone_number, "Numéro de téléphone" %>
+    <%= f.telephone_field :phone_number, class: "form-control", required: true %>
+    <%= f.error_message_on :phone_number %>
+  </div>
+  <div>
+    <%= f.label :message, "Message" %>
+    <%= f.text_area :message, rows: 5, class: "form-control", required: true %>
+    <%= f.error_message_on :message %>
+  </div>
+  <div>
+    <%= f.submit "Envoyer", class: "btn btn-primary" %>
+  </div>
+<% end %>
