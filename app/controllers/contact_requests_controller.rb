@@ -10,8 +10,8 @@ class ContactRequestsController < ApplicationController
       # Exemple d'action à effectuer, comme envoyer un email
       ContactMailer.with(contact_request: @contact_request).send_request.deliver_now
       flash[:notice] = "Votre demande a été envoyée avec succès."
-      redirect_to new_contact_request_path
-    else
+      redirect_to "/letter_opener" # Redirige vers l'interface de letter_opener_web
+        else
       flash[:alert] = "Veuillez corriger les erreurs du formulaire."
       render :new
     end

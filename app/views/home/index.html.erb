@@ -7,19 +7,39 @@
     <div class="text-align-center text-center">
       <h1>Bienvenue au laboratoire Pâtisserie D&Y</h1>
       <p>Découvrez notre expertise et nos réalisations uniques.</p>
-      <%= link_to "Contact",  new_contact_request_path, id:"btn-contact-homepage" %>
+      <%= link_to "Formulaire de ontact",  new_contact_request_path, id:"btn-contact-homepage" %>
     </div>
   </div>
 
+  <!-- Conteneur pour la carte -->
+  <div id="map" style="height: 500px; width: 100%; margin-top: 20px; border-radius: 10px;"></div>
 
-  <div class="wrapper">
-    <div class="">
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Initialisation de la carte
+      var map = L.map('map').setView([48.8566, 2.3522], 13); // Coordonnées de Paris
+
+      // Couche OpenStreetMap
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+
+      // Ajout d'un marqueur
+      L.marker([48.8566, 2.3522]).addTo(map)
+        .bindPopup('<b>Laboratoire Pâtisserie D&Y</b><br>123 Rue de la Pâtisserie, Paris.')
+        .openPopup();
+    });
+  </script>
+
+  <%# Caractéristiques techniques %>
+  <div class="wrapper m-3 mt-5">
+    <div class="mt-4 mb-4 text-center">
       <section id="laboratory-characteristics">
       <h1>Caractéristiques Techniques du Laboratoire de Pâtisserie</h1>
     </div>
 
-    <div class="card m-2 rounded shadow-sm p-3">
-      <h2>Dimensions et Structure</h2>
+    <div class="card m-2 mt-3 rounded shadow-sm p-3">
+      <h4>Dimensions et Structure</h4>
       <ul>
         <li><strong>Surface totale :</strong> 120 m²</li>
         <li><strong>Hauteur sous plafond :</strong> 3,5 m</li>
@@ -29,8 +49,8 @@
       </ul>
     </div>
 
-    <div class="card m-2 rounded shadow-sm p-3">
-      <h2>Équipement de Production</h2>
+    <div class="card m-2 mt-3 rounded shadow-sm p-3">
+      <h4>Équipement de Production</h4>
 
       <ol>
         <li>
@@ -73,8 +93,8 @@
       </ol>
     </div>
 
-    <div class="card m-2 rounded shadow-sm p-3">
-      <h2>Hygiène et Sécurité</h2>
+    <div class="card m-2 mt-3 rounded shadow-sm p-3">
+      <h4>Hygiène et Sécurité</h4>
       <ul>
         <li>Lavabo avec commande au genou pour lavage des mains</li>
         <li>Bac plonge trois compartiments (lavage, rinçage, désinfection)</li>
@@ -84,8 +104,8 @@
       </ul>
     </div>
 
-    <div class="card m-2 rounded shadow-sm p-3">
-      <h2>Énergie et Fluides</h2>
+    <div class="card m-2 mt-3 rounded shadow-sm p-3">
+      <h4>Énergie et Fluides</h4>
       <ul>
         <li>Alimentation électrique : Triphasé 380V, tableau électrique avec disjoncteurs différentiels</li>
         <li>Points d’eau : Eau chaude/froide à plusieurs postes de travail</li>
@@ -94,8 +114,8 @@
       </ul>
     </div>
 
-    <div class="card m-2 rounded shadow-sm p-3">
-      <h2>Technologie</h2>
+    <div class="card m-2 mt-3 rounded shadow-sm p-3">
+      <h4>Technologie</h4>
       <ul>
         <li>Système de gestion des commandes intégré (tablette tactile)</li>
         <li>Balance connectée pour traçabilité des recettes</li>
@@ -105,8 +125,8 @@
       </ul>
     </div>
 
-    <div class="card m-2 rounded shadow-sm p-3">
-      <h2>Confort des Pâtissiers</h2>
+    <div class="card m-2 mt-3 rounded shadow-sm p-3">
+      <h4>Confort des Pâtissiers</h4>
       <ul>
         <li>Zone de pause équipée d’un coin café et micro-ondes</li>
         <li>Vestiaires avec casiers individuels</li>

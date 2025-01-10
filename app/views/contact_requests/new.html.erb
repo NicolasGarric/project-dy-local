@@ -1,8 +1,10 @@
 
+<%# Page de demande de devis %>
 <div class="contact-info d-flex justify-content-center m-3 p-3">
   <div class="text-align-center text-center">
-    <h1>Demande de devis</h1>
+    <h1>Formulaire de contact :</h1>
 
+    <%# Form demande de devis %>
     <%= form_with model: @contact_request, url: contact_requests_path do |f| %>
       <div>
         <%= f.label :first_name, "Prénom" %>
@@ -61,11 +63,9 @@
   </div>
 </div>
 
-<div class="contact-info d-flex justify-content-center m-3 p-3">
-  <div class="text-align-center text-center">
-    <h2>Contactez-nous</h2>
-    <p>Adresse : 123 Rue de la Pâtisserie, Paris</p>
-    <p>Email : contact@patisseriedy.com</p>
-    <p>Téléphone : +33 1 23 45 67 89</p>
+<%# Retour sur l'autre page %>
+<div class="d-flex justify-content-center m-3 p-3">
+    <div class="text-align-center text-center">
+      <%= link_to "Retour à la présentation",  root_path, id:"btn-contact-homepage" %>
+    </div>
   </div>
-</div>
