@@ -6,42 +6,42 @@
   </div>
 <% end %>
 
-
 <%# Banner avec image %>
-<div class="banner">
+<div class="banner position-relative" data-controller="scroll">
   <%= image_tag "banner.webp", class: "img-fluid w-100" %>
 </div>
 
-
+<%# Conteneur principal %>
 <div class="container">
-  <div class="d-flex justify-content-center m-3 p-3">
-    <div class="text-align-center text-center">
-      <h1>Bienvenue au laboratoire Pâtisserie D&Y</h1>
-      <p>Découvrez notre expertise et nos réalisations uniques.</p>
-      <%= link_to "Formulaire de contact",  new_contact_request_path, id:"btn-contact-homepage" %>
+  <%# Présentation && Controller stimulus scroll %>
+  <div  class="container mt-5">
+    <div class="d-flex justify-content-center m-3 p-3">
+      <div class="text-align-center text-center">
+        <h1>Bienvenue au laboratoire Pâtisserie D&Y</h1>
+        <p>Découvrez notre expertise et nos réalisations uniques.</p>
+        <%= link_to "Formulaire de contact", new_contact_request_path, id: "btn-contact-homepage", class: "btn btn-outline-secondary" %>
+      </div>
     </div>
   </div>
 
-  <!-- Conteneur pour la carte -->
+  <%# Carte interactive %>
   <div id="map" style="height: 500px; width: 100%; margin-top: 20px; border-radius: 10px;"></div>
-
   <script>
     document.addEventListener('turbo:load', function () {
-  var mapElement = document.getElementById('map');
+      var mapElement = document.getElementById('map');
 
-  if (mapElement) {
-    var map = L.map('map').setView([48.8566, 2.3522], 13); // Coordonnées de Paris
+      if (mapElement) {
+        var map = L.map('map').setView([48.8566, 2.3522], 13); // Coordonnées de Paris
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
 
-    L.marker([48.8566, 2.3522]).addTo(map)
-      .bindPopup('<b>Laboratoire Pâtisserie D&Y</b><br>123 Rue de la Pâtisserie, Paris.')
-      .openPopup();
-  }
-});
-
+        L.marker([48.8566, 2.3522]).addTo(map)
+          .bindPopup('<b>Laboratoire Pâtisserie D&Y</b><br>123 Rue de la Pâtisserie, Paris.')
+          .openPopup();
+      }
+    });
   </script>
 
   <%# Caractéristiques techniques %>
