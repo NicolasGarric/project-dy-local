@@ -7,7 +7,7 @@
     <%# Form demande de devis %>
     <%= form_with model: @contact_request, url: contact_requests_path do |f| %>
       <div>
-        <%= f.label :first_name, "Prénom" %>
+        <%= f.label :first_name, "Prénom *" %>
         <%= f.text_field :first_name, class: "form-control", required: true %>
         <% if f.object.errors[:first_name].any? %>
           <div class="error-message text-danger">
@@ -17,7 +17,7 @@
       </div>
 
       <div>
-        <%= f.label :last_name, "Nom" %>
+        <%= f.label :last_name, "Nom *" %>
         <%= f.text_field :last_name, class: "form-control", required: true %>
         <% if f.object.errors[:last_name].any? %>
           <div class="error-message text-danger">
@@ -27,7 +27,7 @@
       </div>
 
       <div>
-        <%= f.label :email, "Email" %>
+        <%= f.label :email, "Email *" %>
         <%= f.email_field :email, class: "form-control", required: true %>
         <% if f.object.errors[:email].any? %>
           <div class="error-message text-danger">
@@ -37,7 +37,7 @@
       </div>
 
       <div>
-        <%= f.label :phone_number, "Numéro de téléphone" %>
+        <%= f.label :phone_number, "Numéro de téléphone *" %>
         <%= f.telephone_field :phone_number, class: "form-control", required: true %>
         <% if f.object.errors[:phone_number].any? %>
           <div class="error-message text-danger">
@@ -47,7 +47,7 @@
       </div>
 
       <div>
-        <%= f.label :message, "Message" %>
+        <%= f.label :message, "Message (minimum 50 caractères)" %>
         <%= f.text_area :message, rows: 5, class: "form-control", required: true %>
         <% if f.object.errors[:message].any? %>
           <div class="error-message text-danger">
@@ -57,7 +57,7 @@
       </div>
 
       <div>
-        <%= f.submit "Envoyer", class: "btn btn-primary" %>
+        <%= f.submit "Envoyer", class: " mt-2", id:"btn-contact-homepage" %>
       </div>
     <% end %>
   </div>
