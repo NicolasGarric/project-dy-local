@@ -7,7 +7,7 @@
     <div class="text-align-center text-center">
       <h1>Bienvenue au laboratoire Pâtisserie D&Y</h1>
       <p>Découvrez notre expertise et nos réalisations uniques.</p>
-      <%= link_to "Formulaire de ontact",  new_contact_request_path, id:"btn-contact-homepage" %>
+      <%= link_to "Formulaire de contact",  new_contact_request_path, id:"btn-contact-homepage" %>
     </div>
   </div>
 
@@ -15,20 +15,22 @@
   <div id="map" style="height: 500px; width: 100%; margin-top: 20px; border-radius: 10px;"></div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // Initialisation de la carte
-      var map = L.map('map').setView([48.8566, 2.3522], 13); // Coordonnées de Paris
+    document.addEventListener('turbo:load', function () {
+  var mapElement = document.getElementById('map');
 
-      // Couche OpenStreetMap
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map);
+  if (mapElement) {
+    var map = L.map('map').setView([48.8566, 2.3522], 13); // Coordonnées de Paris
 
-      // Ajout d'un marqueur
-      L.marker([48.8566, 2.3522]).addTo(map)
-        .bindPopup('<b>Laboratoire Pâtisserie D&Y</b><br>123 Rue de la Pâtisserie, Paris.')
-        .openPopup();
-    });
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    L.marker([48.8566, 2.3522]).addTo(map)
+      .bindPopup('<b>Laboratoire Pâtisserie D&Y</b><br>123 Rue de la Pâtisserie, Paris.')
+      .openPopup();
+  }
+});
+
   </script>
 
   <%# Caractéristiques techniques %>
