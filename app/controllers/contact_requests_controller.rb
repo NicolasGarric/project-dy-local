@@ -11,9 +11,6 @@ class ContactRequestsController < ApplicationController
       ContactMailer.with(contact_request: @contact_request).send_request.deliver_now
       flash[:notice] = "Votre demande a été envoyée avec succès."
       redirect_to root_path
-    else
-      flash[:alert] = "Veuillez corriger les erreurs du formulaire."
-      render :new
     end
   end
 
