@@ -14,7 +14,7 @@
 <%# Conteneur principal %>
 <div class="container">
   <%# Présentation && Controller stimulus scroll %>
-  <div  class="container mt-5">
+  <div class="container mt-5">
     <div class="d-flex justify-content-center m-3 p-3">
       <div class="text-align-center text-center">
         <h1>Bienvenue au laboratoire Pâtisserie D&Y</h1>
@@ -29,14 +29,11 @@
   <script>
     document.addEventListener('turbo:load', function () {
       var mapElement = document.getElementById('map');
-
       if (mapElement) {
         var map = L.map('map').setView([48.8566, 2.3522], 13); // Coordonnées de Paris
-
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
-
         L.marker([48.8566, 2.3522]).addTo(map)
           .bindPopup('<b>Laboratoire Pâtisserie D&Y</b><br>123 Rue de la Pâtisserie, Paris.')
           .openPopup();
@@ -44,124 +41,128 @@
     });
   </script>
 
-<%# Partie détail technique && Caroussel d'images %>
+  <%# Section 1 : Caractéristiques Techniques (texte à gauche, carrousel à droite) %>
+  <%= render partial: "shared/carousel_section", locals: {
+    title: "Caractéristiques Techniques du Laboratoire de Pâtisserie",
+    subtitle: "Dimensions et Structure",
+    items: [
+      "<strong>Surface totale :</strong> 120 m²",
+      "<strong>Hauteur sous plafond :</strong> 3,5 m",
+      "<strong>Revêtement de sol :</strong> Résine époxy antidérapante et facile à nettoyer",
+      "<strong>Murs :</strong> Carrelage blanc alimentaire sur une hauteur de 2 m",
+      "<strong>Plafond :</strong> Faux plafond acoustique avec peinture lessivable"
+    ],
+    images: [
+      "https://qph.cf2.quoracdn.net/main-qimg-97023c5672777c4b3076e012526e4a0f-lq",
+      "https://qph.cf2.quoracdn.net/main-qimg-97023c5672777c4b3076e012526e4a0f-lq",
+      "https://qph.cf2.quoracdn.net/main-qimg-97023c5672777c4b3076e012526e4a0f-lq"
+    ],
+    carousel_id: "carouselTech",
+    reverse: false
+  } %>
 
-  <%# Caractéristiques techniques %>
-  <div class="wrapper m-3 mt-5">
-    <div class="mt-4 mb-4 text-center">
-      <div>
-          <section id="laboratory-characteristics">
-          <h1>Caractéristiques Techniques du Laboratoire de Pâtisserie</h1>
-        </div>
-      <div>
-    </div>
+  <%# Section 2 : Équipement de Production (carrousel à gauche, texte à droite) %>
+  <%= render partial: "shared/carousel_section", locals: {
+    title: "Équipement de Production",
+    subtitle: "Machines et Appareils",
+    items: [
+      "Four ventilé à 10 niveaux, capacité GN 1/1",
+      "Four à soles pour pâtisserie, 4 étages avec contrôle indépendant",
+      "Four micro-ondes industriel (1000W minimum)",
+      "Robot pâtissier professionnel 10 L avec accessoires",
+      "Mélangeur planétaire, capacité 20 L",
+      "Laminoir à pâte pour viennoiseries"
+    ],
+    images: [
+      "https://qph.cf2.quoracdn.net/main-qimg-97023c5672777c4b3076e012526e4a0f-lq",
+      "https://qph.cf2.quoracdn.net/main-qimg-97023c5672777c4b3076e012526e4a0f-lq",
+      "https://qph.cf2.quoracdn.net/main-qimg-97023c5672777c4b3076e012526e4a0f-lq"
+    ],
+    carousel_id: "carouselEquipement",
+    reverse: true
+  } %>
 
-        <%# text caractéristiques techniques %>
-        <div class="card m-2 mt-3 rounded shadow-sm p-3">
-          <h4>Dimensions et Structure</h4>
-          <ul>
-            <li><strong>Surface totale :</strong> 120 m²</li>
-            <li><strong>Hauteur sous plafond :</strong> 3,5 m</li>
-            <li><strong>Revêtement de sol :</strong> Résine époxy antidérapante et facile à nettoyer</li>
-            <li><strong>Murs :</strong> Carrelage blanc alimentaire sur une hauteur de 2 m</li>
-            <li><strong>Plafond :</strong> Faux plafond acoustique avec peinture lessivable</li>
-          </ul>
-        </div>
+  <%# Section 3 : Hygiène et Sécurité (texte à gauche, carrousel à droite) %>
+  <%= render partial: "shared/carousel_section", locals: {
+    title: "Hygiène et Sécurité",
+    subtitle: "Mesures et Équipements",
+    items: [
+      "Lavabo avec commande au genou pour lavage des mains",
+      "Bac plonge trois compartiments (lavage, rinçage, désinfection)",
+      "Distributeur de savon et de papier à usage unique",
+      "Système de gestion des déchets (tri sélectif et compacteur intégré)",
+      "Extincteurs adaptés aux feux électriques et graisses"
+    ],
+    images: [
+      "https://qph.cf2.quoracdn.net/main-qimg-97023c5672777c4b3076e012526e4a0f-lq",
+      "https://qph.cf2.quoracdn.net/main-qimg-97023c5672777c4b3076e012526e4a0f-lq",
+      "https://qph.cf2.quoracdn.net/main-qimg-97023c5672777c4b3076e012526e4a0f-lq"
+    ],
+    carousel_id: "carouselHygiene",
+    reverse: false
+  } %>
 
-        <%# carroussel  %>
-        <div>
+  <%# Section 4 : Énergie et Fluides (carrousel à gauche, texte à droite) %>
+  <%= render partial: "shared/carousel_section", locals: {
+    title: "Énergie et Fluides",
+    subtitle: "Systèmes et Consommations",
+    items: [
+      "Alimentation électrique : Triphasé 380V, tableau électrique avec disjoncteurs différentiels",
+      "Points d’eau : Eau chaude/froide à plusieurs postes de travail",
+      "Consommation d’eau : Réduction avec robinets à économie d’eau",
+      "Gaz : Alimentation sécurisée pour cuisinières et chalumeaux"
+    ],
+    images: [
+      "https://qph.cf2.quoracdn.net/main-qimg-97023c5672777c4b3076e012526e4a0f-lq",
+      "https://qph.cf2.quoracdn.net/main-qimg-97023c5672777c4b3076e012526e4a0f-lq",
+      "https://qph.cf2.quoracdn.net/main-qimg-97023c5672777c4b3076e012526e4a0f-lq"
+    ],
+    carousel_id: "carouselEnergie",
+    reverse: true
+  } %>
 
-        </div>
+  <%# Section 5 : Technologie (texte à gauche, carrousel à droite) %>
+  <%= render partial: "shared/carousel_section", locals: {
+    title: "Technologie",
+    subtitle: "Systèmes et Outils Connectés",
+    items: [
+      "Système de gestion des commandes intégré (tablette tactile)",
+      "Balance connectée pour traçabilité des recettes",
+      "Écran interactif pour consultation de fiches techniques et recettes",
+      "Caméras de surveillance pour garantir la conformité aux normes",
+      "Wi-Fi dédié pour les outils connectés"
+    ],
+    images: [
+      "https://qph.cf2.quoracdn.net/main-qimg-97023c5672777c4b3076e012526e4a0f-lq",
+      "https://qph.cf2.quoracdn.net/main-qimg-97023c5672777c4b3076e012526e4a0f-lq",
+      "https://qph.cf2.quoracdn.net/main-qimg-97023c5672777c4b3076e012526e4a0f-lq"
+    ],
+    carousel_id: "carouselTechno",
+    reverse: false
+  } %>
 
+  <%# Section 6 : Confort des Pâtissiers (carrousel à gauche, texte à droite) %>
+  <%= render partial: "shared/carousel_section", locals: {
+    title: "Confort des Pâtissiers",
+    subtitle: "Aménagements et Bien-être",
+    items: [
+      "Zone de pause équipée d’un coin café et micro-ondes",
+      "Vestiaires avec casiers individuels",
+      "Climatisation réversible dans tout le laboratoire",
+      "Sièges ergonomiques pour les tâches longues"
+    ],
+    images: [
+      "https://qph.cf2.quoracdn.net/main-qimg-97023c5672777c4b3076e012526e4a0f-lq",
+      "https://qph.cf2.quoracdn.net/main-qimg-97023c5672777c4b3076e012526e4a0f-lq",
+      "https://qph.cf2.quoracdn.net/main-qimg-97023c5672777c4b3076e012526e4a0f-lq"
+    ],
+    carousel_id: "carouselConfort",
+    reverse: true
+  } %>
 
-    <div class="card m-2 mt-3 rounded shadow-sm p-3">
-      <h4>Équipement de Production</h4>
-
-      <ol>
-        <li>
-          <h6>Fours</h6>
-          <ul>
-            <li>Four ventilé à 10 niveaux, capacité GN 1/1</li>
-            <li>Four à soles pour pâtisserie, 4 étages avec contrôle indépendant</li>
-            <li>Four micro-ondes industriel (1000W minimum)</li>
-          </ul>
-        </li>
-
-        <li>
-          <h6>Plans de Travail</h6>
-          <ul>
-            <li>Plans en inox alimentaire, épaisseur 3 cm, résistants aux chocs thermiques</li>
-            <li>Plan en marbre pour le travail des pâtes (chocolat, viennoiseries)</li>
-          </ul>
-        </li>
-
-        <li>
-          <h6>Réfrigération et Congélation</h6>
-          <ul>
-            <li>Réfrigérateurs positifs : 600 L, avec gestion électronique de la température</li>
-            <li>Congélateurs négatifs : -18 °C, capacité 500 L</li>
-            <li>Armoire de surgélation rapide avec 8 grilles</li>
-          </ul>
-        </li>
-
-        <li>
-          <h6>Machines de Pâtisserie</h6>
-          <ul>
-            <li>Robot pâtissier professionnel 10 L avec accessoires</li>
-            <li>Mélangeur planétaire, capacité 20 L</li>
-            <li>Laminoir à pâte pour viennoiseries</li>
-            <li>Turbine à glace professionnelle, capacité 2 L/h</li>
-            <li>Tempéreuse à chocolat avec contrôle précis de la température</li>
-            <li>Trancheuse pour gâteaux et génoises</li>
-          </ul>
-        </li>
-      </ol>
-    </div>
-
-    <div class="card m-2 mt-3 rounded shadow-sm p-3">
-      <h4>Hygiène et Sécurité</h4>
-      <ul>
-        <li>Lavabo avec commande au genou pour lavage des mains</li>
-        <li>Bac plonge trois compartiments (lavage, rinçage, désinfection)</li>
-        <li>Distributeur de savon et de papier à usage unique</li>
-        <li>Système de gestion des déchets (tri sélectif et compacteur intégré)</li>
-        <li>Extincteurs adaptés aux feux électriques et graisses</li>
-      </ul>
-    </div>
-
-    <div class="card m-2 mt-3 rounded shadow-sm p-3">
-      <h4>Énergie et Fluides</h4>
-      <ul>
-        <li>Alimentation électrique : Triphasé 380V, tableau électrique avec disjoncteurs différentiels</li>
-        <li>Points d’eau : Eau chaude/froide à plusieurs postes de travail</li>
-        <li>Consommation d’eau : Réduction avec robinets à économie d’eau</li>
-        <li>Gaz : Alimentation sécurisée pour cuisinières et chalumeaux</li>
-      </ul>
-    </div>
-
-    <div class="card m-2 mt-3 rounded shadow-sm p-3">
-      <h4>Technologie</h4>
-      <ul>
-        <li>Système de gestion des commandes intégré (tablette tactile)</li>
-        <li>Balance connectée pour traçabilité des recettes</li>
-        <li>Écran interactif pour consultation de fiches techniques et recettes</li>
-        <li>Caméras de surveillance pour garantir la conformité aux normes</li>
-        <li>Wi-Fi dédié pour les outils connectés</li>
-      </ul>
-    </div>
-
-    <div class="card m-2 mt-3 rounded shadow-sm p-3">
-      <h4>Confort des Pâtissiers</h4>
-      <ul>
-        <li>Zone de pause équipée d’un coin café et micro-ondes</li>
-        <li>Vestiaires avec casiers individuels</li>
-        <li>Climatisation réversible dans tout le laboratoire</li>
-        <li>Sièges ergonomiques pour les tâches longues</li>
-      </ul>
-    </div>
-  </div>
 </div>
 
+<%# Footer %>
 <div class="footer d-flex justify-content-center align-items-center">
   <div class="footer-links">
     <a href="#"><i class="fab fa-instagram"></i></a>

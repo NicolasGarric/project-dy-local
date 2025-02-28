@@ -57,3 +57,10 @@
   border: 2px solid #ddd;
   border-radius: 10px;
 }
+
+// carroussel images
+.carousel-img {
+  width: 300px;
+  height: 300px; /* Ajuste cette valeur selon ton besoin */
+  object-fit: cover; /* Garantit que l'image remplit l'espace sans distorsion */
+}

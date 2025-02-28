@@ -1,0 +1,71 @@
+<div class="container mt-5">
+  <div class="row">
+    <% if reverse %>
+      <!-- Colonne de gauche : Carrousel -->
+      <div class="col-md-6">
+        <div id="<%= carousel_id %>" class="carousel slide">
+          <div class="carousel-inner">
+            <% images.each_with_index do |img, index| %>
+              <div class="carousel-item <%= 'active' if index.zero? %>">
+                <img src="<%= img %>" class="d-block w-100" alt="<%= title %> Image <%= index + 1 %>">
+              </div>
+            <% end %>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#<%= carousel_id %>" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Précédent</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#<%= carousel_id %>" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Suivant</span>
+          </button>
+        </div>
+      </div>
+      <!-- Colonne de droite : Texte -->
+      <div class="col-md-6 d-flex flex-column justify-content-center">
+        <h1 class="text-center"><%= title %></h1>
+        <div class="mt-4">
+          <h4><%= subtitle %></h4>
+          <ul>
+            <% items.each do |item| %>
+              <li><%= item %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% else %>
+      <!-- Colonne de gauche : Texte -->
+      <div class="col-md-6 d-flex flex-column justify-content-center">
+        <h1 class="text-center"><%= title %></h1>
+        <div class="mt-4">
+          <h4><%= subtitle %></h4>
+          <ul>
+            <% items.each do |item| %>
+              <li><%= item %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <!-- Colonne de droite : Carrousel -->
+      <div class="col-md-6">
+        <div id="<%= carousel_id %>" class="carousel slide">
+          <div class="carousel-inner">
+            <% images.each_with_index do |img, index| %>
+              <div class="carousel-item <%= 'active' if index.zero? %>">
+                <img src="<%= img %>" class="d-block w-100" alt="<%= title %> Image <%= index + 1 %>">
+              </div>
+            <% end %>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#<%= carousel_id %>" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Précédent</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#<%= carousel_id %>" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Suivant</span>
+          </button>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
