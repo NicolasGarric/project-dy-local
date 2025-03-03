@@ -1,9 +1,8 @@
 <%# Page de demande de devis %>
 <div class="contact-info d-flex justify-content-center m-3 p-3">
-  <div class="text-align-center text-center">
+  <div class="">
     <h1>Formulaire de contact :</h1>
 
-    <%# Form demande de devis %>
     <%= form_with model: @contact_request, url: contact_requests_path do |f| %>
       <div>
         <%= f.label :first_name, "Prénom *" %>
@@ -55,8 +54,18 @@
         <% end %>
       </div>
 
+      <%# Champ de date range visible pour la réservation %>
+      <div class="mb-3">
+        <%= label_tag :date_range, "Période de réservation *" %>
+        <%= text_field_tag :date_range, "", class: "form-control", id: "date_range_picker", placeholder: "Sélectionnez la période" %>
+      </div>
+
+      <%# Champs cachés pour stocker la date de début et de fin %>
+      <%= f.hidden_field :start_date, id: "contact_request_start_date" %>
+      <%= f.hidden_field :end_date, id: "contact_request_end_date" %>
+
       <div>
-        <%= f.submit "Envoyer", class: " mt-2", id:"btn-contact-homepage" %>
+        <%= f.submit "Envoyer", class: "mt-2 btn btn-primary", id: "btn-contact-homepage" %>
       </div>
     <% end %>
   </div>
@@ -64,7 +73,7 @@
 
 <%# Retour sur l'autre page %>
 <div class="d-flex justify-content-center m-3 p-3">
-    <div class="text-align-center text-center">
-      <%= link_to "Retour",  root_path, id:"btn-contact-homepage" %>
-    </div>
+  <div class="text-align-center text-center">
+    <%= link_to "Retour", root_path, id: "btn-contact-homepage" %>
   </div>
+</div>
