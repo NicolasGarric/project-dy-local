@@ -5,12 +5,14 @@ class ContactRequestsController < ApplicationController
 
   def create
     @contact_request = ContactRequest.new(contact_request_params)
-
-    if @contact_request.valid?
-      # Exemple d'action à effectuer, comme envoyer un email
+    if @contact_request.save
+      # Envoi de l'email avec la demande de devis
       ContactMailer.with(contact_request: @contact_request).send_request.deliver_now
       flash[:notice] = "Votre demande a été envoyée avec succès."
       redirect_to root_path
+    else
+      flash.now[:alert] = "Une erreur est survenue lors de l'envoi de votre demande. Veuillez corriger les erreurs ci-dessous."
+      render :new, status: :unprocessable_entity
     end
   end
 

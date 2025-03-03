@@ -23,15 +23,18 @@
 
     <!-- JS de Flatpickr -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/fr.js"></script>
 
     <!-- Vous pouvez ajouter ici votre script d'initialisation de Flatpickr ou le placer dans un fichier JS dédié -->
     <script>
       document.addEventListener("turbo:load", function() {
         flatpickr("#date_range_picker", {
+          locale: "fr",
           mode: "range",
-          dateFormat: "Y-m-d",
+          dateFormat: "d/m/Y",  // Affichage au format jour/mois/année
           onClose: function(selectedDates, dateStr, instance) {
             if (selectedDates.length === 2) {
+              // Vous pouvez enregistrer les dates au format "Y-m-d" pour la base
               document.getElementById("contact_request_start_date").value = instance.formatDate(selectedDates[0], "Y-m-d");
               document.getElementById("contact_request_end_date").value = instance.formatDate(selectedDates[1], "Y-m-d");
             }

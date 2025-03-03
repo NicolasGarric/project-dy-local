@@ -1,79 +1,96 @@
-<%# Page de demande de devis %>
-<div class="contact-info d-flex justify-content-center m-3 p-3">
-  <div class="">
-    <h1>Formulaire de contact :</h1>
+<%# Page de demande de devis améliorée %>
+<div class="container text-center mt-5">
+  <h2>Formulaire de contact</h2>
+</div>
 
-    <%= form_with model: @contact_request, url: contact_requests_path do |f| %>
-      <div>
-        <%= f.label :first_name, "Prénom *" %>
-        <%= f.text_field :first_name, class: "form-control", required: true %>
-        <% if f.object.errors[:first_name].any? %>
-          <div class="error-message text-danger">
-            <%= f.object.errors.full_messages_for(:first_name).join(", ") %>
-          </div>
-        <% end %>
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <%= form_with model: @contact_request, url: contact_requests_path, local: true do |f| %>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <%= f.label :first_name, "Prénom *", class: "form-label" %>
+                <%= f.text_field :first_name, class: "form-control", required: true %>
+                <% if f.object.errors[:first_name].any? %>
+                  <div class="text-danger small">
+                    <%= f.object.errors.full_messages_for(:first_name).join(", ") %>
+                  </div>
+                <% end %>
+              </div>
+              <div class="col-md-6 mb-3">
+                <%= f.label :last_name, "Nom *", class: "form-label" %>
+                <%= f.text_field :last_name, class: "form-control", required: true %>
+                <% if f.object.errors[:last_name].any? %>
+                  <div class="text-danger small">
+                    <%= f.object.errors.full_messages_for(:last_name).join(", ") %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <%= f.label :email, "Email *", class: "form-label" %>
+                <%= f.email_field :email, class: "form-control", required: true %>
+                <% if f.object.errors[:email].any? %>
+                  <div class="text-danger small">
+                    <%= f.object.errors.full_messages_for(:email).join(", ") %>
+                  </div>
+                <% end %>
+              </div>
+              <div class="col-md-6 mb-3">
+                <%= f.label :phone_number, "Numéro de téléphone *", class: "form-label" %>
+                <%= f.telephone_field :phone_number, class: "form-control", required: true %>
+                <% if f.object.errors[:phone_number].any? %>
+                  <div class="text-danger small">
+                    <%= f.object.errors.full_messages_for(:phone_number).join(", ") %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <%= f.label :company_name, "Société", class: "form-label" %>
+              <%= f.text_field :company_name, class: "form-control" %>
+              <% if f.object.errors[:company_name].any? %>
+                <div class="text-danger small">
+                  <%= f.object.errors.full_messages_for(:company_name).join(", ") %>
+                </div>
+              <% end %>
+            </div>
+
+            <div class="mb-3">
+              <%= f.label :message, "Message (minimum 50 caractères)", class: "form-label" %>
+              <%= f.text_area :message, rows: 5, class: "form-control", required: true %>
+              <% if f.object.errors[:message].any? %>
+                <div class="text-danger small">
+                  <%= f.object.errors.full_messages_for(:message).join(", ") %>
+                </div>
+              <% end %>
+            </div>
+
+            <%# Champ de date range visible pour la réservation %>
+            <div class="mb-3">
+              <%= label_tag :date_range, "Période de réservation *", class: "form-label" %>
+              <%= text_field_tag :date_range, "", class: "form-control", id: "date_range_picker", placeholder: "Sélectionnez la période" %>
+            </div>
+
+            <%# Champs cachés pour stocker la date de début et de fin %>
+            <%= f.hidden_field :start_date, id: "contact_request_start_date" %>
+            <%= f.hidden_field :end_date, id: "contact_request_end_date" %>
+
+            <div class="d-grid gap-2">
+              <%= f.submit "Envoyer", class: "btn btn-primary btn-lg", id: "btn-contact-homepage" %>
+            </div>
+          <% end %>
+        </div>
       </div>
-
-      <div>
-        <%= f.label :last_name, "Nom *" %>
-        <%= f.text_field :last_name, class: "form-control", required: true %>
-        <% if f.object.errors[:last_name].any? %>
-          <div class="error-message text-danger">
-            <%= f.object.errors.full_messages_for(:last_name).join(", ") %>
-          </div>
-        <% end %>
-      </div>
-
-      <div>
-        <%= f.label :email, "Email *" %>
-        <%= f.email_field :email, class: "form-control", required: true %>
-        <% if f.object.errors[:email].any? %>
-          <div class="error-message text-danger">
-            <%= f.object.errors.full_messages_for(:email).join(", ") %>
-          </div>
-        <% end %>
-      </div>
-
-      <div>
-        <%= f.label :phone_number, "Numéro de téléphone *" %>
-        <%= f.telephone_field :phone_number, class: "form-control", required: true %>
-        <% if f.object.errors[:phone_number].any? %>
-          <div class="error-message text-danger">
-            <%= f.object.errors.full_messages_for(:phone_number).join(", ") %>
-          </div>
-        <% end %>
-      </div>
-
-      <div>
-        <%= f.label :message, "Message (minimum 50 caractères)" %>
-        <%= f.text_area :message, rows: 5, class: "form-control", required: true %>
-        <% if f.object.errors[:message].any? %>
-          <div class="error-message text-danger">
-            <%= f.object.errors.full_messages_for(:message).join(", ") %>
-          </div>
-        <% end %>
-      </div>
-
-      <%# Champ de date range visible pour la réservation %>
-      <div class="mb-3">
-        <%= label_tag :date_range, "Période de réservation *" %>
-        <%= text_field_tag :date_range, "", class: "form-control", id: "date_range_picker", placeholder: "Sélectionnez la période" %>
-      </div>
-
-      <%# Champs cachés pour stocker la date de début et de fin %>
-      <%= f.hidden_field :start_date, id: "contact_request_start_date" %>
-      <%= f.hidden_field :end_date, id: "contact_request_end_date" %>
-
-      <div>
-        <%= f.submit "Envoyer", class: "mt-2 btn btn-primary", id: "btn-contact-homepage" %>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>
 
-<%# Retour sur l'autre page %>
-<div class="d-flex justify-content-center m-3 p-3">
-  <div class="text-align-center text-center">
-    <%= link_to "Retour", root_path, id: "btn-contact-homepage" %>
-  </div>
+<div class="text-center">
+  <%= link_to "Retour", root_path, class: "", id: "btn-contact-homepage" %>
 </div>
