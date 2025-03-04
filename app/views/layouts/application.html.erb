@@ -6,8 +6,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <!-- Feuille de style Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-sA+z2NJbuwTghAiO0nODLV80My2GqzEkg+Xb9R07w6M=" crossorigin=""/>
+    <!-- Feuille de style Leaflet sans attribut d'intégrité -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
 
     <!-- Feuille de style de votre application -->
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
@@ -18,23 +18,21 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <!-- Script Leaflet -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-o9N1jRQTYlw+gKNCDIsWv2HQ0vzzPvU5p8C6zHf0f8w=" crossorigin=""></script>
+    <!-- Script Leaflet sans attribut d'intégrité -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 
     <!-- JS de Flatpickr -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/fr.js"></script>
 
-    <!-- Vous pouvez ajouter ici votre script d'initialisation de Flatpickr ou le placer dans un fichier JS dédié -->
     <script>
       document.addEventListener("turbo:load", function() {
         flatpickr("#date_range_picker", {
           locale: "fr",
           mode: "range",
-          dateFormat: "d/m/Y",  // Affichage au format jour/mois/année
+          dateFormat: "d/m/Y",  // Format affiché au format français
           onClose: function(selectedDates, dateStr, instance) {
             if (selectedDates.length === 2) {
-              // Vous pouvez enregistrer les dates au format "Y-m-d" pour la base
               document.getElementById("contact_request_start_date").value = instance.formatDate(selectedDates[0], "Y-m-d");
               document.getElementById("contact_request_end_date").value = instance.formatDate(selectedDates[1], "Y-m-d");
             }

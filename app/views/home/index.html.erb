@@ -37,6 +37,10 @@
         L.marker([48.8566, 2.3522]).addTo(map)
           .bindPopup('<b>Laboratoire Pâtisserie D&Y</b><br>123 Rue de la Pâtisserie, Paris.')
           .openPopup();
+        // Forcer le recalcul de la taille du conteneur
+        setTimeout(function(){
+          map.invalidateSize();
+        }, 100);
       }
     });
   </script>
